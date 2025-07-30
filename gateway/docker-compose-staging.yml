@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  staging:
+    image: ghcr.io/nervus-tech/nervus-gateway:staging
+    ports:
+      - "8112:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=staging
+      - SERVER_PORT=8080
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 1G
+    # Gateway typically doesn't need database connection
+    # but may need to connect to other services
+    # depends_on removed - expects shared infrastructure
+  # No postgres service needed for gateway
