@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   gateway:
-    image: nervus-tech/nervus-gateway:latest
+    image: ghcr.io/nervus-tech/nervus-gateway:v1.0.0
     ports:
       - "8111:8080"
     environment:
