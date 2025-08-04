@@ -1,12 +1,16 @@
 version: '3.8'
 services:
   gateway:
-    image: ghcr.io/nervus-tech/nervus-gateway:v1.0.0
+    image: ghcr.io/nervus-tech/nervus-gateway:v1.1.0
     ports:
       - "8111:8080"
     environment:
       - SPRING_PROFILES_ACTIVE=local
       - SERVER_PORT=8080
+      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://eureka:8761/eureka/
+      - EUREKA_CLIENT_REGISTER_WITH_EUREKA=true
+      - EUREKA_CLIENT_FETCH_REGISTRY=true
+      - EUREKA_INSTANCE_PREFER_IP_ADDRESS=true
     # Gateway typically doesn't need database connection
     # but may need to connect to other services
     # depends_on removed - expects shared infrastructure

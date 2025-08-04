@@ -11,9 +11,14 @@ public class GatewayConfig {
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
         return builder.routes()
                 .route("auth", r -> r.path("/auth/**")
-                        .uri("lb://nervus-authentication")) // Placeholder URI, update with Eureka
+                        .filters(f -> f.stripPrefix(1))
+                        .uri("lb://AUTHENTICATION"))
                 .route("user", r -> r.path("/users/**")
-                        .uri("lb://nervus-user"))          // Placeholder URI
+                        .filters(f -> f.stripPrefix(1))
+                        .uri("lb://USER"))
+                .route("course", r -> r.path("/courses/**")
+                        .filters(f -> f.stripPrefix(1))
+                        .uri("lb://COURSE"))
                 .build();
     }
 }
