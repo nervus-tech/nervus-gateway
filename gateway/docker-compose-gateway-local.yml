@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  app:
+    extends:
+      file: docker-compose-gateway-base.yml
+      service: app
+    container_name: gateway-local
+    ports:
+      - "8111:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=local
+      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://eureka-local:8761/eureka/
+      - TAG=v1.1.0-local
+    networks:
+      - nervus-local-network
+
+networks:
+  nervus-local-network:
+    external: true

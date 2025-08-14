@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  app:
+    extends:
+      file: docker-compose-gateway-base.yml
+      service: app
+    container_name: gateway-staging
+    ports:
+      - "8112:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=staging
+      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://eureka:8761/eureka/
+      - TAG=v1.1.0-staging
+    networks:
+      - nervus-infrastructure_default
+
+networks:
+  nervus-infrastructure_default:
+    external: true
