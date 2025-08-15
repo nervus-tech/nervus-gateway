@@ -10,15 +10,14 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=prod
       - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://eureka:8761/eureka/
-      - TAG=v1.1.0-prod
     deploy:
       resources:
         limits:
           cpus: "1.5"
           memory: 3G
     networks:
-      - nervus-infrastructure_default
+      - nervus-network
 
 networks:
-  nervus-infrastructure_default:
+  nervus-network:
     external: true

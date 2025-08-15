@@ -10,10 +10,9 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=staging
       - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://eureka:8761/eureka/
-      - TAG=v1.1.0-staging
     networks:
-      - nervus-infrastructure_default
+      - nervus-network
 
 networks:
-  nervus-infrastructure_default:
+  nervus-network:
     external: true
